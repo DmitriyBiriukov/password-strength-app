@@ -1,0 +1,26 @@
+<!-- Container for the Password Strength Checker -->
+<div class="container">
+  <!-- Title for the Password Strength Checker -->
+  <h1>Password Strength Checker</h1>
+  
+  <!-- Input field for entering the password -->
+  <input [(ngModel)]="password" (input)="checkPasswordStrength()" placeholder="Enter your password" />
+  
+  <!-- Password strength indicator section -->
+  <div class="strength-indicator">
+    <!-- Weak password indicator section -->
+    <div [ngClass]="{'red': password.length < 8, 'gray': password.length >= 8}">
+      <div class="indicator-label">Weak</div>
+    </div>
+    
+    <!-- Medium password indicator section -->
+    <div [ngClass]="{'yellow': password.length >= 8 && passwordStrength === 'medium', 'gray': password.length < 8 || passwordStrength === 'strong'}">
+      <div class="indicator-label">Medium</div>
+    </div>
+    
+    <!-- Strong password indicator section -->
+    <div [ngClass]="{'green': passwordStrength === 'strong', 'gray': password.length < 8 || passwordStrength === 'medium'}">
+      <div class="indicator-label">Strong</div>
+    </div>
+  </div>
+</div>
